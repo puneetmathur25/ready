@@ -9,4 +9,8 @@ class Instrument {
 
     static constraints = {
     }
+	
+	String toString() {
+		return name
+	}
 }

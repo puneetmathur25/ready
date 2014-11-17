@@ -8,4 +8,8 @@ class Diagnosis {
 
     static constraints = {
     }
+	
+	String toString() {
+		return name
+	}
 }

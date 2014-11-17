@@ -9,4 +9,8 @@ class Physician {
 
     static constraints = {
     }
+	
+	String toString() {
+		return physicianName
+	}
 }

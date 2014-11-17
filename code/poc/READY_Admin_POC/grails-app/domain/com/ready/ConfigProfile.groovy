@@ -10,4 +10,8 @@ class ConfigProfile {
 	
     static constraints = {
     }
+	
+	String toString() {
+		return name
+	}
 }
