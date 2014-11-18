@@ -3,10 +3,13 @@ package com.ready
 class Question {
 
 	String questionString
-//	List<String> responseOptions
+	ResponseType responseType
 	
-    static constraints = {
-    }
+//    static hasOne = [responseType : ResponseType]
+//	
+//	static constraints = {
+//		responseType unique: true
+//    }
 	
 	String toString() {
 		return questionString
