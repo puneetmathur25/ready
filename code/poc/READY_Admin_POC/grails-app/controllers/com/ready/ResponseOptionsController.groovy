@@ -1,5 +1,5 @@
 package com.ready
 
-class ResponseController {
+class ResponseOptionsController {
     static scaffold = true
 }

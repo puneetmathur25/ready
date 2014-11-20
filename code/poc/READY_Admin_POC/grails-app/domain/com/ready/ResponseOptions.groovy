@@ -1,6 +1,6 @@
 package com.ready
 
-class Response {
+class ResponseOptions {
 
 	String name
 	String value

@@ -8,8 +8,6 @@ class ResponseType {
 		
     }
 	
-	static hasMany = [responseOptions : Response]
-	
 	String toString() {
 		return name
 	}
