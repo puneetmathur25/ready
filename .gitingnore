@@ -1,1 +1,12 @@
-**/.DS_Store
+Servers/
+.DS_Store
+**/.idea/
+**/target/
+*.iml
+**/*.bak
+repository
+.project
+.classpath
+.settings
+target/
+logs/
