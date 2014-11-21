@@ -6,9 +6,7 @@ class ConfigProfile {
 	Boolean saveResults
 	String greeting
 	
-//	Map<Instrument, List<Diagnosis>> instrumentDiagnosisMap
-
-	 static belongsTo = Site
+	static belongsTo = Site
 	static hasMany = [sites : Site, instruments : Instrument]
 	
     static constraints = {

@@ -2,7 +2,11 @@ package com.ready
 
 class Physician {
 	
-	String physicianName
+	String firstName
+	String lastName
+	String city
+	String state
+	String npi
 	
 	static belongsTo = Site
 	static hasMany = [sites : Site]
@@ -11,6 +15,6 @@ class Physician {
     }
 	
 	String toString() {
-		return physicianName
+		return firstName + " " + lastName
 	}
 }

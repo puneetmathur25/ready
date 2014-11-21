@@ -4,6 +4,7 @@ class Site {
 
 	String siteUserId
 	String password
+	String greeting
 	ConfigProfile defaultConfigProfile
 	
 	static belongsTo = [institution : Institution]

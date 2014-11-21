@@ -4,8 +4,8 @@ class Instrument {
 	
 	String name
 	
-	static hasMany = [questions : Question]
-//	static belongsTo = [diagnosis : Diagnosis]
+	static belongsTo = Diagnosis
+	static hasMany = [questions : Question, diagnoses : Diagnosis]
 
     static constraints = {
     }

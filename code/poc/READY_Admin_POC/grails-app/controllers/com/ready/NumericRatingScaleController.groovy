@@ -1,5 +1,5 @@
 package com.ready
 
-class ResponseOptionsController {
+class NumericRatingScaleController {
     static scaffold = true
 }
