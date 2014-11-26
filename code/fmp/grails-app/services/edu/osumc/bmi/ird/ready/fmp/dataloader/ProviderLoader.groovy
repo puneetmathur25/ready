@@ -1,0 +1,54 @@
+package edu.osumc.bmi.ird.ready.fmp.dataloader
+
+import edu.osumc.bmi.ird.ready.fmp.Provider
+
+import groovy.io.FileType
+
+class ProviderLoader {
+	def static loadDataFromFile(file) {
+			
+		this.log.info 'Populating Database'
+		def newProviders = 0
+		def totalProviders = 0
+		
+		def inStream = new FileInputStream(file)
+		inStream.splitEachLine(',(?=([^\"]*\"[^\"]*\")*[^\"]*$)') {fields ->
+			
+			def props = [npi: fields[0].trim().replaceAll (/"/, ''),
+					lastName: fields[5].trim().replaceAll (/"/, ''),
+					firstName: fields[6].trim().replaceAll (/"/, ''),
+					middleName: fields[7].trim().replaceAll (/"/, ''),
+					prefix: fields[8].trim().replaceAll (/"/, ''),
+					suffix: fields[9].trim().replaceAll (/"/, ''),
+					credential: fields[10].trim().replaceAll (/"/, ''),
+					streetAdress1: fields[28].trim().replaceAll (/"/, ''),
+					streetAdress2: fields[29].trim().replaceAll (/"/, ''),
+					city: fields[30].trim().replaceAll (/"/, ''),
+					state: fields[31].trim().replaceAll (/"/, ''),
+					zip: fields[32].trim().replaceAll (/"/, ''),
+					country: fields[33].trim().replaceAll (/"/, ''),
+					phoneNumber: fields[34].trim().replaceAll (/"/, ''),
+					fax: fields[35].trim().replaceAll (/"/, '')
+					]
+			
+			// Check if object is already in DB, update if already exists
+			def domainObject = Provider.findByNpi(props.npi)
+			if (!domainObject) {
+				domainObject = new Provider()
+				newProviders++
+			}
+			domainObject.properties = props
+			if (fields[1].trim().replaceAll (/"/, '').equals("1"))
+			// Removes all "CareSite" instances
+			{
+				if (domainObject.hasErrors() || domainObject.save(flush: true) == null) {
+					log.error("Could not import domainObject  ${domainObject.errors}")
+				}
+			}
+			totalProviders++
+			log.debug("Importing domainObject  ${domainObject.toString()}")
+		}
+		this.log.info 'Finished Populating Database'
+		this.log.info 'New Providers: ' + newProviders + '.  Total Providers: ' + totalProviders + '.'
+	}
+}
