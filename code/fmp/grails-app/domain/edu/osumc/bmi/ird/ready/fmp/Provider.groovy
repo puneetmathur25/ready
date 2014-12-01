@@ -22,6 +22,12 @@ class Provider {
 	
 	Date dateCreated
 	Date lastUpdated
+	
+	static searchable = {
+		mapping {
+			spellCheck "include"
+		}
+	}
 
     static constraints = {
 		
